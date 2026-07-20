@@ -19,6 +19,12 @@
 - Do not request extra manifest permissions/host permissions for same-origin
   `fetch()` calls to `screener.in` endpoints; the content-script match
   pattern already covers them.
+- `npm run package` builds and zips the Web Store upload artifact
+  (`release/screener-ai-context-v<version>.zip`); bump `manifest.json`'s
+  `version` before re-running for a new upload. `scripts/package.js` writes
+  the zip with a hand-rolled zip writer (no `zip` CLI dependency, since
+  Git Bash on Windows doesn't ship one) — do not add a zip dependency
+  without checking this still isn't needed.
 - Run before committing:
   - `npm run build`
   - `npm run lint`

@@ -64,12 +64,15 @@ XMLHttpRequest`; without that header this one endpoint returns the full
   Profit & Loss, Balance Sheet, Cash Flow) is immediately followed by its
   own `schedules.js`/`extras.js` breakdowns and segments, rather than
   grouping all breakdowns at the end. After the four statements: Corporate
-  Actions and Related Party Transactions (concrete, dated, sourced
-  records), then Company Insights (Screener AI-extracted, beta — lower
-  confidence than the above), then Shareholding Pattern, Ratios, and Peer
-  Comparison last (aggregated/derived views) — "primary data takes
-  precedence" over summary/derived/unverified data. Wires the assembled
-  markdown to clipboard copy or `.md` download.
+  Actions (concrete, dated, sourced records), then Company Insights
+  (Screener AI-extracted, beta — lower confidence than the above), then
+  Shareholding Pattern and Ratios, then Peer Comparison, then Related Party
+  Transactions last — "primary data takes precedence" over
+  summary/derived/unverified data, except RPT is deliberately placed at the
+  very end (after Peer Comparison) rather than next to Corporate Actions:
+  for conglomerates/complex group structures it can be very large, and
+  trailing off the end is preferable to crowding out everything after it.
+  Wires the assembled markdown to clipboard copy or `.md` download.
 
 ## Company Insights
 

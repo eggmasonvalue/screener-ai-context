@@ -37,6 +37,25 @@ Concalls (Screener AI already has direct tool access to those), and the
 4. Open any `https://www.screener.in/company/<TICKER>/...` page. Two buttons
    appear bottom-right: **Copy AI context (.md)** and **Download .md**.
 
+## Install on Android (Quetta, etc.)
+
+Quetta (and most Chromium-based Android browsers with extension support) only
+install extensions from the Chrome Web Store/Edge Add-ons — there's no
+"load unpacked from a folder" option like desktop Chrome, and local
+`.crx`/`.zip` sideloading is unreliable where it exists at all. The
+practical path for a personal, unpublished extension is an **Unlisted**
+Chrome Web Store listing (not searchable, installable only via its direct
+URL):
+
+1. `npm run package` — builds and zips `manifest.json` + `dist/content.js` +
+   `icons/` into `release/screener-ai-context-v<version>.zip`.
+2. Upload that zip to the
+   [Chrome Web Store Developer Dashboard](https://chrome.google.com/webstore/devconsole)
+   (one-time $5 registration fee), set visibility to **Unlisted**.
+3. Once published, open the listing's direct URL in Quetta (or any Android
+   browser with Web Store-based extension install) and install it there —
+   same flow as any other Chrome Web Store extension.
+
 ## Usage
 
 1. Click **Copy AI context (.md)**.
