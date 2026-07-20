@@ -94,6 +94,12 @@ Documents, Announcements, Annual Reports, Credit Ratings, Concalls — the
 Screener AI harness already has direct tool access to these (confirmed via
 its own tool-list response), so scraping them here would be redundant.
 
+Auto-filling/sending the assembled markdown into Screener AI's own chat
+panel — that panel is a cross-origin `<iframe>` (a third-party embed at
+`stocks-ai.com`, not part of screener.in), unreachable from this content
+script's DOM by design (Same-Origin Policy). See `context/DECISIONS.md`
+(2026-07-21) for what was checked and why it's not worth chasing further.
+
 ## Known gaps (not yet solved, not guessed at)
 
 - Shareholding-pattern sub-category breakdowns (FIIs+/DIIs+/Government+/

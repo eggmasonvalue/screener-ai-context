@@ -51,3 +51,27 @@ Tradeoff: adds a build step (`npm run build`) before the extension is
 loadable; in exchange, sidesteps undocumented/version-dependent MV3 module
 behavior entirely.
 Status: active
+
+## 2026-07-21 — No auto-fill/auto-send into Screener AI's chat panel
+
+Context: Explored adding a button to push the assembled markdown directly
+into Screener AI's own chat input instead of copy/paste. Screener AI's chat
+(opened by the page's own "AI" button) is not part of the screener.in page
+— it's a third-party embed, an `<iframe>` pointing at a signed URL on a
+different origin (`stocks-ai.com/chats/<id>/?key=...&signature=...`).
+Confirmed via `iframe.contentDocument` returning `null` from the parent
+page: genuine cross-origin isolation (Same-Origin Policy), not a
+permissions or manifest issue.
+Decision: do not add a second content script matched on `stocks-ai.com` (or
+any other cross-origin-DOM-poking approach) to reach into that iframe's
+textarea. Leave the export flow as copy-to-clipboard / download-`.md` only;
+the user pastes into the chat panel themselves.
+Tradeoff: this tool's own origin (`screener.in`) genuinely cannot script
+the chat panel's DOM — the only ways in are (a) matching a content script
+to a third-party vendor's undocumented, signed-URL widget (selectors and
+auth scheme entirely outside our control, could break silently on either
+party's next deploy), or (b) a `postMessage` bridge, unconfirmed to exist
+and not worth the reverse-engineering to find out for what would still be a
+fragile integration. One extra manual paste step is the far more durable
+tradeoff.
+Status: active
