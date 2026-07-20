@@ -1,0 +1,22 @@
+{
+  "name": "screener-ai-context",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Chrome extension: exports a screener.in company page's structured financials as Markdown to paste into Screener AI as context.",
+  "type": "module",
+  "scripts": {
+    "build": "esbuild src/content.js --bundle --outfile=dist/content.js --target=chrome96",
+    "watch": "npm run build -- --watch",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint:md": "markdownlint-cli2 \"**/*.md\""
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.14.0",
+    "esbuild": "^0.24.0",
+    "eslint": "^9.14.0",
+    "markdownlint-cli2": "^0.14.0",
+    "prettier": "^3.3.3"
+  }
+}
